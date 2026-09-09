@@ -1,5 +1,5 @@
 {
-  "Name": "RoscomVPN Whitelist",
+  "Name": "Voxell Routing Whitelist",
   "GlobalProxy": "true",
   "UseChunkFiles": "true",
   "RemoteDns": "8.8.8.8",

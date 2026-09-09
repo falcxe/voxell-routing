@@ -1,4 +1,4 @@
-name: Update Routing Configs
+name: Update Voxell Routing Configs
 
 on:
   workflow_dispatch:

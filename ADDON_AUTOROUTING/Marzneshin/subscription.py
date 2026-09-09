@@ -6,35 +6,41 @@ import time as _time
 from collections import defaultdict
 
 
-# ─── RoscomVPN Routing Resolver ─────────────────────────────────────────────────
+# ─── Voxell Routing Resolver ────────────────────────────────────────────────────
 # Fetches .DEEPLINK content from GitHub with 10-min TTL cache, 30s negative
 # cache on failure, and thread-safe locking. No blocking HEAD on every request.
 #
 # Override via env vars:
-#   ROSCOMVPN_ROUTING_SOURCE  = default | jsonsub | whitelist | custom
-#   ROSCOMVPN_ROUTING_CUSTOM  = <your happ:// URL>
+#   VOXELL_ROUTING_SOURCE  = default | jsonsub | whitelist | custom
+#   VOXELL_ROUTING_CUSTOM  = <your happ:// URL>
 # ─────────────────────────────────────────────────────────────────────────────────
 
-_ROSCOMVPN_URLS = {
-    "default": "https://raw.githubusercontent.com/hydraponique/roscomvpn-routing/main/HAPP/DEFAULT.DEEPLINK",
-    "jsonsub": "https://raw.githubusercontent.com/hydraponique/roscomvpn-routing/main/HAPP/JSONSUB.DEEPLINK",
-    "whitelist": "https://raw.githubusercontent.com/hydraponique/roscomvpn-routing/main/HAPP/WHITELIST.DEEPLINK",
+_VOXELL_ROUTING_URLS = {
+    "default": "https://raw.githubusercontent.com/falcxe/voxell-routing/main/HAPP/DEFAULT.DEEPLINK",
+    "jsonsub": "https://raw.githubusercontent.com/falcxe/voxell-routing/main/HAPP/JSONSUB.DEEPLINK",
+    "whitelist": "https://raw.githubusercontent.com/falcxe/voxell-routing/main/HAPP/WHITELIST.DEEPLINK",
 }
 
 
-class _RoscomVPNResolver:
+class _VoxellRoutingResolver:
     def __init__(self, default_source: str):
         self._lock = threading.Lock()
         self._value = ""
         self._fetched_at = 0.0
         self._last_fail = 0.0
-        self._source = os.environ.get("ROSCOMVPN_ROUTING_SOURCE", default_source).strip().lower()
-        self._custom = os.environ.get("ROSCOMVPN_ROUTING_CUSTOM", "").strip()
+        source = os.environ.get("VOXELL_ROUTING_SOURCE")
+        if source is None:
+            source = os.environ.get("ROSCOMVPN_ROUTING_SOURCE", default_source)
+        custom = os.environ.get("VOXELL_ROUTING_CUSTOM")
+        if custom is None:
+            custom = os.environ.get("ROSCOMVPN_ROUTING_CUSTOM", "")
+        self._source = source.strip().lower()
+        self._custom = custom.strip()
 
     def get(self) -> str:
         if self._source == "custom":
             return self._custom
-        url = _ROSCOMVPN_URLS.get(self._source)
+        url = _VOXELL_ROUTING_URLS.get(self._source)
         if not url:
             return self._custom
         now = _time.monotonic()
@@ -57,7 +63,7 @@ class _RoscomVPNResolver:
         return self._value
 
 
-roscomvpn_resolver = _RoscomVPNResolver("default")
+voxell_routing_resolver = _VoxellRoutingResolver("default")
 
 from fastapi import APIRouter
 from fastapi import Header, HTTPException, Path, Request, Response
@@ -147,8 +153,8 @@ def user_subscription(
         ),
     }
     
-    # RoscomVPN: cached routing deeplink (no blocking HEAD per request)
-    _routing = roscomvpn_resolver.get()
+    # Voxell Routing: cached routing deeplink (no blocking HEAD per request)
+    _routing = voxell_routing_resolver.get()
     if _routing:
         response_headers["routing"] = _routing
         response_headers["routing-enable"] = "true"
@@ -258,8 +264,8 @@ def user_subscription_with_client_type(
         ),
     }
     
-    # RoscomVPN: cached routing deeplink (no blocking HEAD per request)
-    _routing = roscomvpn_resolver.get()
+    # Voxell Routing: cached routing deeplink (no blocking HEAD per request)
+    _routing = voxell_routing_resolver.get()
     if _routing:
         response_headers["routing"] = _routing
         response_headers["routing-enable"] = "true"

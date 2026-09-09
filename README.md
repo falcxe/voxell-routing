@@ -2,18 +2,18 @@
 
 <table width="100%">
 <tr>
-<td align="center"><a href="https://github.com/hydraponique/roscomvpn-geoip">RoscomVPN GeoIP</a></td>
-<td align="center"><a href="https://github.com/hydraponique/roscomvpn-geosite">RoscomVPN Geosite</a></td>
-<td align="center"><a href="https://github.com/falcxe/roscomvpn-routing"><b>🚀 RoscomVPN Routing</b></a></td>
+<td align="center"><a href="https://github.com/hydraponique/roscomvpn-geoip">GeoIP (upstream)</a></td>
+<td align="center"><a href="https://github.com/hydraponique/roscomvpn-geosite">Geosite (upstream)</a></td>
+<td align="center"><a href="https://github.com/falcxe/voxell-routing"><b>🚀 Voxell Routing</b></a></td>
 </tr>
 <tr>
 <td align="center"><img src="https://img.shields.io/github/downloads/hydraponique/roscomvpn-geoip/total.svg" alt="Downloads"> <img src="https://data.jsdelivr.com/v1/package/gh/hydraponique/roscomvpn-geoip/badge" alt="jsDelivr"></td>
 <td align="center"><img src="https://img.shields.io/github/downloads/hydraponique/roscomvpn-geosite/total.svg" alt="Downloads"> <img src="https://data.jsdelivr.com/v1/package/gh/hydraponique/roscomvpn-geosite/badge" alt="jsDelivr"></td>
-<td align="center"><img src="https://img.shields.io/github/stars/falcxe/roscomvpn-routing.svg" alt="Stars"> <img src="https://img.shields.io/badge/Happ-blue.svg" alt="Happ"> <img src="https://img.shields.io/badge/Mihomo-grey.svg" alt="Mihomo"> <img src="https://img.shields.io/badge/Incy-darkgreen.svg" alt="Incy"></td>
+<td align="center"><img src="https://img.shields.io/github/stars/falcxe/voxell-routing.svg" alt="Stars"> <img src="https://img.shields.io/badge/Happ-blue.svg" alt="Happ"> <img src="https://img.shields.io/badge/Mihomo-grey.svg" alt="Mihomo"> <img src="https://img.shields.io/badge/Incy-darkgreen.svg" alt="Incy"></td>
 </tr>
 </table>
 
-# 🚀 RoscomVPN Routing
+# 🚀 Voxell Routing
 
 **Готовые конфигурации маршрутизации для [Happ](https://happ.su), [INCY](https://incy.cc) и [Mihomo](https://github.com/MetaCubeX/mihomo) (Clash Meta, Clash Mi и др.)**
 
@@ -32,14 +32,14 @@
 <tbody>
 <tr><td>⚡ Быстрая установка (оригинал)</td><td><a href="https://routing.help">routing.help</a></td><td>Редирект на оригинальный DEFAULT; профиль этого форка — по ссылкам ниже</td></tr>
 <tr><td colspan="3"><b>DEFAULT</b> — полный профиль: RU/BY direct, YouTube/Telegram/GitHub через прокси, реклама блокируется</td></tr>
-<tr><td>🔗 DEFAULT.DEEPLINK</td><td><a href="https://raw.githubusercontent.com/falcxe/roscomvpn-routing/refs/heads/main/HAPP/DEFAULT.DEEPLINK">Просмотр</a></td><td>Диплинк-ссылка в текстовом формате</td></tr>
-<tr><td>📊 DEFAULT.JSON</td><td><a href="https://raw.githubusercontent.com/falcxe/roscomvpn-routing/refs/heads/main/HAPP/DEFAULT.JSON">Просмотр</a></td><td>JSON-конфиг роутинга</td></tr>
+<tr><td>🔗 DEFAULT.DEEPLINK</td><td><a href="https://raw.githubusercontent.com/falcxe/voxell-routing/refs/heads/main/HAPP/DEFAULT.DEEPLINK">Просмотр</a></td><td>Диплинк-ссылка в текстовом формате</td></tr>
+<tr><td>📊 DEFAULT.JSON</td><td><a href="https://raw.githubusercontent.com/falcxe/voxell-routing/refs/heads/main/HAPP/DEFAULT.JSON">Просмотр</a></td><td>JSON-конфиг роутинга</td></tr>
 <tr><td colspan="3"><b>WHITELIST</b> — direct только для сервисов и IP из белых списков РФ; всё остальное через прокси</td></tr>
-<tr><td>🔗 WHITELIST.DEEPLINK</td><td><a href="https://raw.githubusercontent.com/falcxe/roscomvpn-routing/refs/heads/main/HAPP/WHITELIST.DEEPLINK">Просмотр</a></td><td>Диплинк-ссылка в текстовом формате</td></tr>
-<tr><td>📊 WHITELIST.JSON</td><td><a href="https://raw.githubusercontent.com/falcxe/roscomvpn-routing/refs/heads/main/HAPP/WHITELIST.JSON">Просмотр</a></td><td>JSON-конфиг роутинга</td></tr>
+<tr><td>🔗 WHITELIST.DEEPLINK</td><td><a href="https://raw.githubusercontent.com/falcxe/voxell-routing/refs/heads/main/HAPP/WHITELIST.DEEPLINK">Просмотр</a></td><td>Диплинк-ссылка в текстовом формате</td></tr>
+<tr><td>📊 WHITELIST.JSON</td><td><a href="https://raw.githubusercontent.com/falcxe/voxell-routing/refs/heads/main/HAPP/WHITELIST.JSON">Просмотр</a></td><td>JSON-конфиг роутинга</td></tr>
 <tr><td colspan="3"><b>JSONSUB</b> — минимальный профиль: только DNS + кастомные geoip/geosite, без встроенных правил</td></tr>
-<tr><td>🔗 JSONSUB.DEEPLINK</td><td><a href="https://raw.githubusercontent.com/falcxe/roscomvpn-routing/refs/heads/main/HAPP/JSONSUB.DEEPLINK">Просмотр</a></td><td>Диплинк-ссылка в текстовом формате</td></tr>
-<tr><td>📊 JSONSUB.JSON</td><td><a href="https://raw.githubusercontent.com/falcxe/roscomvpn-routing/refs/heads/main/HAPP/JSONSUB.JSON">Просмотр</a></td><td>JSON-конфиг роутинга</td></tr>
+<tr><td>🔗 JSONSUB.DEEPLINK</td><td><a href="https://raw.githubusercontent.com/falcxe/voxell-routing/refs/heads/main/HAPP/JSONSUB.DEEPLINK">Просмотр</a></td><td>Диплинк-ссылка в текстовом формате</td></tr>
+<tr><td>📊 JSONSUB.JSON</td><td><a href="https://raw.githubusercontent.com/falcxe/voxell-routing/refs/heads/main/HAPP/JSONSUB.JSON">Просмотр</a></td><td>JSON-конфиг роутинга</td></tr>
 </tbody>
 </table>
 
@@ -50,14 +50,14 @@
 <tbody>
 <tr><td>⚡ Быстрая установка (оригинал)</td><td><a href="https://incy.routing.help">incy.routing.help</a></td><td>Редирект на оригинальный DEFAULT; профиль этого форка — по ссылкам ниже</td></tr>
 <tr><td colspan="3"><b>DEFAULT</b> — полный профиль: RU/BY direct, YouTube/Telegram/GitHub через прокси, реклама блокируется</td></tr>
-<tr><td>🔗 DEFAULT.DEEPLINK</td><td><a href="https://raw.githubusercontent.com/falcxe/roscomvpn-routing/refs/heads/main/INCY/DEFAULT.DEEPLINK">Просмотр</a></td><td>Диплинк-ссылка в текстовом формате</td></tr>
-<tr><td>📊 DEFAULT.JSON</td><td><a href="https://raw.githubusercontent.com/falcxe/roscomvpn-routing/refs/heads/main/INCY/DEFAULT.JSON">Просмотр</a></td><td>JSON-конфиг роутинга</td></tr>
+<tr><td>🔗 DEFAULT.DEEPLINK</td><td><a href="https://raw.githubusercontent.com/falcxe/voxell-routing/refs/heads/main/INCY/DEFAULT.DEEPLINK">Просмотр</a></td><td>Диплинк-ссылка в текстовом формате</td></tr>
+<tr><td>📊 DEFAULT.JSON</td><td><a href="https://raw.githubusercontent.com/falcxe/voxell-routing/refs/heads/main/INCY/DEFAULT.JSON">Просмотр</a></td><td>JSON-конфиг роутинга</td></tr>
 <tr><td colspan="3"><b>WHITELIST</b> — direct только для сервисов и IP из белых списков РФ; всё остальное через прокси</td></tr>
-<tr><td>🔗 WHITELIST.DEEPLINK</td><td><a href="https://raw.githubusercontent.com/falcxe/roscomvpn-routing/refs/heads/main/INCY/WHITELIST.DEEPLINK">Просмотр</a></td><td>Диплинк-ссылка в текстовом формате</td></tr>
-<tr><td>📊 WHITELIST.JSON</td><td><a href="https://raw.githubusercontent.com/falcxe/roscomvpn-routing/refs/heads/main/INCY/WHITELIST.JSON">Просмотр</a></td><td>JSON-конфиг роутинга</td></tr>
+<tr><td>🔗 WHITELIST.DEEPLINK</td><td><a href="https://raw.githubusercontent.com/falcxe/voxell-routing/refs/heads/main/INCY/WHITELIST.DEEPLINK">Просмотр</a></td><td>Диплинк-ссылка в текстовом формате</td></tr>
+<tr><td>📊 WHITELIST.JSON</td><td><a href="https://raw.githubusercontent.com/falcxe/voxell-routing/refs/heads/main/INCY/WHITELIST.JSON">Просмотр</a></td><td>JSON-конфиг роутинга</td></tr>
 <tr><td colspan="3"><b>JSONSUB</b> — минимальный профиль: только DNS + кастомные geoip/geosite, без встроенных правил</td></tr>
-<tr><td>🔗 JSONSUB.DEEPLINK</td><td><a href="https://raw.githubusercontent.com/falcxe/roscomvpn-routing/refs/heads/main/INCY/JSONSUB.DEEPLINK">Просмотр</a></td><td>Диплинк-ссылка в текстовом формате</td></tr>
-<tr><td>📊 JSONSUB.JSON</td><td><a href="https://raw.githubusercontent.com/falcxe/roscomvpn-routing/refs/heads/main/INCY/JSONSUB.JSON">Просмотр</a></td><td>JSON-конфиг роутинга</td></tr>
+<tr><td>🔗 JSONSUB.DEEPLINK</td><td><a href="https://raw.githubusercontent.com/falcxe/voxell-routing/refs/heads/main/INCY/JSONSUB.DEEPLINK">Просмотр</a></td><td>Диплинк-ссылка в текстовом формате</td></tr>
+<tr><td>📊 JSONSUB.JSON</td><td><a href="https://raw.githubusercontent.com/falcxe/voxell-routing/refs/heads/main/INCY/JSONSUB.JSON">Просмотр</a></td><td>JSON-конфиг роутинга</td></tr>
 </tbody>
 </table>
 
@@ -170,7 +170,7 @@
 <table width="100%">
 <thead><tr><th align="left">Панель</th><th align="left">Описание</th></tr></thead>
 <tbody>
-<tr><td><a href="https://github.com/hydraponique/3x-ui">🚀 3x-ui</a></td><td>Кастомный форк с встроенным RoscomVPN-роутингом, UI-выбором профиля и автообновлением geo-файлов</td></tr>
+<tr><td><a href="https://github.com/hydraponique/3x-ui">🚀 3x-ui</a></td><td>Кастомный форк со встроенным Voxell Routing, UI-выбором профиля и автообновлением geo-файлов</td></tr>
 <tr><td><a href="ADDON_AUTOROUTING/Marzban/">Marzban</a></td><td><code>subscription.py</code> — один файл для JSON и Non-JSON подписок, тип роутинга через env var</td></tr>
 <tr><td><a href="ADDON_AUTOROUTING/Marzneshin/">Marzneshin</a></td><td><code>subscription.py</code> — один файл для JSON и Non-JSON подписок, тип роутинга через env var</td></tr>
 <tr><td><a href="ADDON_AUTOROUTING/Remnawave/">Remnawave</a></td><td>Контейнер для автообновления роутинга через API</td></tr>
@@ -182,7 +182,7 @@
 ## 🔄 Автообновление
 
 > [!IMPORTANT]
-> Конфиги автоматически обновляются при выходе новых релизов [roscomvpn-geoip](https://github.com/hydraponique/roscomvpn-geoip) и [roscomvpn-geosite](https://github.com/hydraponique/roscomvpn-geosite)
+> Конфиги автоматически обновляются при выходе новых релизов [upstream GeoIP](https://github.com/hydraponique/roscomvpn-geoip) и [upstream Geosite](https://github.com/hydraponique/roscomvpn-geosite)
 
 GitHub Actions:
 - Проверяет теги апстрим-репозиториев
@@ -192,8 +192,8 @@ GitHub Actions:
 
 ## 🔗 Связанные проекты
 
-- [roscomvpn-geoip](https://github.com/hydraponique/roscomvpn-geoip) — IP-диапазоны (geoip.dat)
-- [roscomvpn-geosite](https://github.com/hydraponique/roscomvpn-geosite) — доменные списки (geosite.dat)
+- [GeoIP (upstream)](https://github.com/hydraponique/roscomvpn-geoip) — IP-диапазоны (geoip.dat)
+- [Geosite (upstream)](https://github.com/hydraponique/roscomvpn-geosite) — доменные списки (geosite.dat)
 
 ---
 
