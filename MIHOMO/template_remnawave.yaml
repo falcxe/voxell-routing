@@ -423,6 +423,20 @@ rules:
   - RULE-SET,torrent-domains,DIRECT                # торрент-трекеры — напрямую
 
   # --- Сервисы через PROXY ---
+  # BEGIN CUSTOM DIRECT DOMAINS
+  - DOMAIN-SUFFIX,ru,DIRECT
+  - DOMAIN-SUFFIX,su,DIRECT
+  - DOMAIN-SUFFIX,xn--p1ai,DIRECT
+  - DOMAIN-SUFFIX,faceit.com,DIRECT
+  - DOMAIN-SUFFIX,faceit-cdn.net,DIRECT
+  - DOMAIN-SUFFIX,counter-strike.net,DIRECT
+  - DOMAIN-SUFFIX,steamserver.net,DIRECT
+  - DOMAIN-SUFFIX,steampowered.com,DIRECT
+  - DOMAIN-SUFFIX,steamcommunity.com,DIRECT
+  - DOMAIN-SUFFIX,steamcontent.com,DIRECT
+  - DOMAIN-SUFFIX,steamgames.com,DIRECT
+  - DOMAIN-SUFFIX,valvesoftware.com,DIRECT
+  # END CUSTOM DIRECT DOMAINS
   - RULE-SET,google-play,PROXY
   - RULE-SET,twitch-ads,PROXY                      # домены Twitch Ads — через PROXY (фикс качества)
   - RULE-SET,youtube,📺 Youtube
@@ -455,6 +469,12 @@ rules:
   - PROCESS-NAME-REGEX,vesktop,💬 Discord.exe
 
   # --- Широкие категории ---
+  # BEGIN CUSTOM DIRECT PROCESSES
+  - PROCESS-NAME,cs2.exe,DIRECT
+  - PROCESS-NAME,csgo.exe,DIRECT
+  - PROCESS-NAME,faceitservice.exe,DIRECT
+  - PROCESS-NAME,faceitclient.exe,DIRECT
+  # END CUSTOM DIRECT PROCESSES
   - RULE-SET,games,🎮 Игры                         # общая игровая категория
   - RULE-SET,ru-apps,DIRECT                        # RU-приложения Android
 

@@ -29,6 +29,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - name: Apply custom routing rules
+        run: python3 scripts/apply-custom-rules.py
+
       - name: Update HAPP configs
         shell: bash
         run: |
@@ -196,7 +199,7 @@ jobs:
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-          git add HAPP/DEFAULT.JSON HAPP/WHITELIST.JSON HAPP/JSONSUB.JSON HAPP/DEFAULT.DEEPLINK HAPP/WHITELIST.DEEPLINK HAPP/JSONSUB.DEEPLINK INCY/DEFAULT.JSON INCY/WHITELIST.JSON INCY/JSONSUB.JSON INCY/DEFAULT.DEEPLINK INCY/WHITELIST.DEEPLINK INCY/JSONSUB.DEEPLINK
+          git add HAPP/DEFAULT.JSON HAPP/WHITELIST.JSON HAPP/JSONSUB.JSON HAPP/DEFAULT.DEEPLINK HAPP/WHITELIST.DEEPLINK HAPP/JSONSUB.DEEPLINK INCY/DEFAULT.JSON INCY/WHITELIST.JSON INCY/JSONSUB.JSON INCY/DEFAULT.DEEPLINK INCY/WHITELIST.DEEPLINK INCY/JSONSUB.DEEPLINK MIHOMO/default.yaml MIHOMO/template_remnawave.yaml
 
           if git diff --cached --quiet; then
             exit 0

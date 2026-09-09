@@ -1,0 +1,18 @@
+# Доменные суффиксы, которые должны идти напрямую.
+# xn--p1ai — IDNA-запись зоны .рф.
+ru
+su
+xn--p1ai
+
+# FACEIT
+faceit.com
+faceit-cdn.net
+
+# Valve / Counter-Strike 2: служебные и серверные домены.
+counter-strike.net
+steamserver.net
+steampowered.com
+steamcommunity.com
+steamcontent.com
+steamgames.com
+valvesoftware.com
