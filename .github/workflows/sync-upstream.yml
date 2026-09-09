@@ -1,0 +1,42 @@
+name: Sync upstream
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: sync-upstream
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout fork
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Merge upstream
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote add upstream https://github.com/hydraponique/roscomvpn-routing.git
+          git fetch upstream main
+          git checkout main
+
+          if ! git merge --no-edit upstream/main; then
+            git merge --abort || true
+            echo "::error::Upstream changes conflict with custom changes. Resolve the conflict manually."
+            exit 1
+          fi
+
+          git push origin main
