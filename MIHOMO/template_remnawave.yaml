@@ -412,17 +412,6 @@ rules:
   # --- Системные / приватные адреса ---
   - RULE-SET,private-ips,DIRECT,no-resolve         # приватные IP — всегда напрямую, без DNS
   - IP-CIDR,::/0,REJECT-DROP,no-resolve            # весь IPv6-трафик, не попавший в fake-ip — блок
-  - AND,((NETWORK,UDP),(DST-PORT,443)),REJECT-DROP # QUIC — принудительно через TCP
-  - RULE-SET,private-domains,DIRECT                # локальные домены — напрямую
-
-  # --- Блокировки ---
-  - RULE-SET,category-ads,REJECT-DROP              # реклама
-  - RULE-SET,win-spy,REJECT-DROP                   # телеметрия Windows
-
-  # --- Торренты ---
-  - RULE-SET,torrent-domains,DIRECT                # торрент-трекеры — напрямую
-
-  # --- Сервисы через PROXY ---
   # BEGIN CUSTOM PROXY DOMAINS
   - DOMAIN-SUFFIX,bytedapm.com,PROXY
   - DOMAIN-SUFFIX,byteeffecttos-g.com,PROXY
@@ -468,6 +457,17 @@ rules:
   - DOMAIN-SUFFIX,ttoverseaus.net,PROXY
   - DOMAIN-SUFFIX,ttwstatic.com,PROXY
   # END CUSTOM PROXY DOMAINS
+  - AND,((NETWORK,UDP),(DST-PORT,443)),REJECT-DROP # QUIC — принудительно через TCP
+  - RULE-SET,private-domains,DIRECT                # локальные домены — напрямую
+
+  # --- Блокировки ---
+  - RULE-SET,category-ads,REJECT-DROP              # реклама
+  - RULE-SET,win-spy,REJECT-DROP                   # телеметрия Windows
+
+  # --- Торренты ---
+  - RULE-SET,torrent-domains,DIRECT                # торрент-трекеры — напрямую
+
+  # --- Сервисы через PROXY ---
   # BEGIN CUSTOM DIRECT DOMAINS
   - DOMAIN-SUFFIX,ru,DIRECT
   - DOMAIN-SUFFIX,su,DIRECT

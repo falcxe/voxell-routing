@@ -110,7 +110,7 @@ def update_mihomo_profiles(
             managed_block(
                 proxy_domain_lines, proxy_domain_begin, proxy_domain_end
             ),
-            "  - RULE-SET,google-play,PROXY",
+            "  - AND,((NETWORK,UDP),(DST-PORT,443)),REJECT-DROP",
         )
         text = replace_or_insert_block(
             text,
