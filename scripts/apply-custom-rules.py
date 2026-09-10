@@ -21,8 +21,11 @@ def read_items(path: Path) -> list[str]:
     return items
 
 
-def update_happ_profiles(domains: list[str]) -> None:
-    entries = [f"domain:{domain}" for domain in domains]
+def update_happ_profiles(
+    direct_domains: list[str], proxy_domains: list[str]
+) -> None:
+    direct_entries = [f"domain:{domain}" for domain in direct_domains]
+    proxy_entries = [f"domain:{domain}" for domain in proxy_domains]
 
     for relative_path in ("HAPP/DEFAULT.JSON", "INCY/DEFAULT.JSON"):
         path = ROOT / relative_path
@@ -30,9 +33,15 @@ def update_happ_profiles(domains: list[str]) -> None:
         direct_sites = data.setdefault("DirectSites", [])
         changed = False
 
-        for entry in entries:
+        for entry in direct_entries:
             if entry not in direct_sites:
                 direct_sites.append(entry)
+                changed = True
+
+        proxy_sites = data.setdefault("ProxySites", [])
+        for entry in proxy_entries:
+            if entry not in proxy_sites:
+                proxy_sites.append(entry)
                 changed = True
 
         if changed:
@@ -72,12 +81,21 @@ def replace_or_insert_block(
     return text[:anchor_index] + block + text[anchor_index:]
 
 
-def update_mihomo_profiles(domains: list[str], processes: list[str]) -> None:
-    domain_lines = [f"  - DOMAIN-SUFFIX,{domain},DIRECT" for domain in domains]
+def update_mihomo_profiles(
+    direct_domains: list[str], proxy_domains: list[str], processes: list[str]
+) -> None:
+    direct_domain_lines = [
+        f"  - DOMAIN-SUFFIX,{domain},DIRECT" for domain in direct_domains
+    ]
+    proxy_domain_lines = [
+        f"  - DOMAIN-SUFFIX,{domain},PROXY" for domain in proxy_domains
+    ]
     process_lines = [f"  - PROCESS-NAME,{process},DIRECT" for process in processes]
 
-    domain_begin = "  # BEGIN CUSTOM DIRECT DOMAINS"
-    domain_end = "  # END CUSTOM DIRECT DOMAINS"
+    direct_domain_begin = "  # BEGIN CUSTOM DIRECT DOMAINS"
+    direct_domain_end = "  # END CUSTOM DIRECT DOMAINS"
+    proxy_domain_begin = "  # BEGIN CUSTOM PROXY DOMAINS"
+    proxy_domain_end = "  # END CUSTOM PROXY DOMAINS"
     process_begin = "  # BEGIN CUSTOM DIRECT PROCESSES"
     process_end = "  # END CUSTOM DIRECT PROCESSES"
 
@@ -87,9 +105,20 @@ def update_mihomo_profiles(domains: list[str], processes: list[str]) -> None:
 
         text = replace_or_insert_block(
             text,
-            domain_begin,
-            domain_end,
-            managed_block(domain_lines, domain_begin, domain_end),
+            proxy_domain_begin,
+            proxy_domain_end,
+            managed_block(
+                proxy_domain_lines, proxy_domain_begin, proxy_domain_end
+            ),
+            "  - RULE-SET,google-play,PROXY",
+        )
+        text = replace_or_insert_block(
+            text,
+            direct_domain_begin,
+            direct_domain_end,
+            managed_block(
+                direct_domain_lines, direct_domain_begin, direct_domain_end
+            ),
             "  - RULE-SET,google-play,PROXY",
         )
         text = replace_or_insert_block(
@@ -104,16 +133,19 @@ def update_mihomo_profiles(domains: list[str], processes: list[str]) -> None:
 
 
 def main() -> None:
-    domains = read_items(CUSTOM_DIR / "direct-domains.txt")
+    direct_domains = read_items(CUSTOM_DIR / "direct-domains.txt")
+    proxy_domains = read_items(CUSTOM_DIR / "proxy-domains.txt")
     processes = read_items(CUSTOM_DIR / "direct-processes.txt")
 
-    if not domains:
+    if not direct_domains:
         raise SystemExit("custom/direct-domains.txt is empty")
+    if not proxy_domains:
+        raise SystemExit("custom/proxy-domains.txt is empty")
     if not processes:
         raise SystemExit("custom/direct-processes.txt is empty")
 
-    update_happ_profiles(domains)
-    update_mihomo_profiles(domains, processes)
+    update_happ_profiles(direct_domains, proxy_domains)
+    update_mihomo_profiles(direct_domains, proxy_domains, processes)
 
 
 if __name__ == "__main__":

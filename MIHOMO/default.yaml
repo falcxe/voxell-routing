@@ -383,6 +383,34 @@ rules:
   - RULE-SET,category-ads,REJECT-DROP
   - RULE-SET,win-spy,REJECT-DROP
   - RULE-SET,torrent-domains,DIRECT
+  # BEGIN CUSTOM PROXY DOMAINS
+  - DOMAIN-SUFFIX,bytedapm.com,PROXY
+  - DOMAIN-SUFFIX,byteoversea.com,PROXY
+  - DOMAIN-SUFFIX,muscdn.com,PROXY
+  - DOMAIN-SUFFIX,musical.ly,PROXY
+  - DOMAIN-SUFFIX,tik-tokapi.com,PROXY
+  - DOMAIN-SUFFIX,tiktok-minis.com,PROXY
+  - DOMAIN-SUFFIX,tiktok-row.net,PROXY
+  - DOMAIN-SUFFIX,tiktok.com,PROXY
+  - DOMAIN-SUFFIX,tiktokcdn-eu.com,PROXY
+  - DOMAIN-SUFFIX,tiktokcdn-us.com,PROXY
+  - DOMAIN-SUFFIX,tiktokcdn.com,PROXY
+  - DOMAIN-SUFFIX,tiktokd.net,PROXY
+  - DOMAIN-SUFFIX,tiktokd.org,PROXY
+  - DOMAIN-SUFFIX,tiktokeu-cdn.com,PROXY
+  - DOMAIN-SUFFIX,tiktokglobalshopv.com,PROXY
+  - DOMAIN-SUFFIX,tiktokminis.us,PROXY
+  - DOMAIN-SUFFIX,tiktokrow-cdn.com,PROXY
+  - DOMAIN-SUFFIX,tiktokv.com,PROXY
+  - DOMAIN-SUFFIX,tiktokv.eu,PROXY
+  - DOMAIN-SUFFIX,tiktokv.us,PROXY
+  - DOMAIN-SUFFIX,tiktokw.eu,PROXY
+  - DOMAIN-SUFFIX,tiktokw.us,PROXY
+  - DOMAIN-SUFFIX,ttcdn-us.com,PROXY
+  - DOMAIN-SUFFIX,ttlivecdn.com,PROXY
+  - DOMAIN-SUFFIX,ttoverseaus.net,PROXY
+  - DOMAIN-SUFFIX,ttwstatic.com,PROXY
+  # END CUSTOM PROXY DOMAINS
   # BEGIN CUSTOM DIRECT DOMAINS
   - DOMAIN-SUFFIX,ru,DIRECT
   - DOMAIN-SUFFIX,su,DIRECT
