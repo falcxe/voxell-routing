@@ -30,8 +30,12 @@ def update_happ_profiles(
     for relative_path in ("HAPP/DEFAULT.JSON", "INCY/DEFAULT.JSON"):
         path = ROOT / relative_path
         data = json.loads(path.read_text(encoding="utf-8"))
+        if str(data.get("FakeDNS", "")).lower() != "true":
+            data["FakeDNS"] = "true"
+            changed = True
+        else:
+            changed = False
         direct_sites = data.setdefault("DirectSites", [])
-        changed = False
 
         for entry in direct_entries:
             if entry not in direct_sites:
