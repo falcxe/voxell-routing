@@ -425,9 +425,20 @@ rules:
   # --- Сервисы через PROXY ---
   # BEGIN CUSTOM PROXY DOMAINS
   - DOMAIN-SUFFIX,bytedapm.com,PROXY
+  - DOMAIN-SUFFIX,byteeffecttos-g.com,PROXY
+  - DOMAIN-SUFFIX,bytegecko-i18n.com,PROXY
+  - DOMAIN-SUFFIX,byteintlapi.com,PROXY
   - DOMAIN-SUFFIX,byteoversea.com,PROXY
+  - DOMAIN-SUFFIX,bytedance.map.fastly.net,PROXY
+  - DOMAIN-SUFFIX,ibyteimg.com,PROXY
+  - DOMAIN-SUFFIX,ibytedtos.com,PROXY
+  - DOMAIN-SUFFIX,ipstatp.com,PROXY
+  - DOMAIN-SUFFIX,isnssdk.com,PROXY
   - DOMAIN-SUFFIX,muscdn.com,PROXY
   - DOMAIN-SUFFIX,musical.ly,PROXY
+  - DOMAIN-SUFFIX,p16-tiktokcdn-com.akamaized.net,PROXY
+  - DOMAIN-SUFFIX,sgpstatp.com,PROXY
+  - DOMAIN-SUFFIX,snssdk.com,PROXY
   - DOMAIN-SUFFIX,tik-tokapi.com,PROXY
   - DOMAIN-SUFFIX,tiktok-minis.com,PROXY
   - DOMAIN-SUFFIX,tiktok-row.net,PROXY
@@ -435,19 +446,25 @@ rules:
   - DOMAIN-SUFFIX,tiktokcdn-eu.com,PROXY
   - DOMAIN-SUFFIX,tiktokcdn-us.com,PROXY
   - DOMAIN-SUFFIX,tiktokcdn.com,PROXY
+  - DOMAIN-SUFFIX,tiktokcdn.com.akamaized.net,PROXY
+  - DOMAIN-SUFFIX,tiktokcdn.com.edgesuite.net,PROXY
   - DOMAIN-SUFFIX,tiktokd.net,PROXY
   - DOMAIN-SUFFIX,tiktokd.org,PROXY
   - DOMAIN-SUFFIX,tiktokeu-cdn.com,PROXY
   - DOMAIN-SUFFIX,tiktokglobalshopv.com,PROXY
+  - DOMAIN-SUFFIX,tiktokmusic.app,PROXY
   - DOMAIN-SUFFIX,tiktokminis.us,PROXY
   - DOMAIN-SUFFIX,tiktokrow-cdn.com,PROXY
   - DOMAIN-SUFFIX,tiktokv.com,PROXY
+  - DOMAIN-SUFFIX,tiktokv.com.edgekey.net,PROXY
+  - DOMAIN-SUFFIX,tiktokv.com.edgesuite.net,PROXY
   - DOMAIN-SUFFIX,tiktokv.eu,PROXY
   - DOMAIN-SUFFIX,tiktokv.us,PROXY
   - DOMAIN-SUFFIX,tiktokw.eu,PROXY
   - DOMAIN-SUFFIX,tiktokw.us,PROXY
   - DOMAIN-SUFFIX,ttcdn-us.com,PROXY
   - DOMAIN-SUFFIX,ttlivecdn.com,PROXY
+  - DOMAIN-SUFFIX,ttwebview.com,PROXY
   - DOMAIN-SUFFIX,ttoverseaus.net,PROXY
   - DOMAIN-SUFFIX,ttwstatic.com,PROXY
   # END CUSTOM PROXY DOMAINS
