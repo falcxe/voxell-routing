@@ -22,7 +22,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Merge upstream
+      - name: Merge upstream and reapply Voxell overlay
         shell: bash
         run: |
           set -euo pipefail
@@ -32,11 +32,49 @@ jobs:
           git remote add upstream https://github.com/hydraponique/roscomvpn-routing.git
           git fetch upstream main
           git checkout main
+          fork_head="$(git rev-parse HEAD)"
 
-          if ! git merge --no-edit upstream/main; then
-            git merge --abort || true
-            echo "::error::Upstream changes conflict with custom changes. Resolve the conflict manually."
-            exit 1
+          # Generated deeplinks are single-line base64 blobs. When both sides
+          # regenerate them, prefer the fresh upstream files and rebuild them
+          # below after applying the fork-local overlay.
+          git merge --no-edit -X theirs upstream/main
+
+          # Keep the fork-local source of truth even if upstream later adds a
+          # file with the same path or changes the generated output around it.
+          git checkout "$fork_head" -- \
+            .github/workflows/sync-upstream.yml \
+            custom \
+            scripts/apply-custom-rules.py
+
+          PYTHONDONTWRITEBYTECODE=1 python3 scripts/apply-custom-rules.py
+
+          generate_deeplinks() {
+            local directory="$1"
+            local scheme="$2"
+            local profile
+            local encoded
+
+            for profile in DEFAULT WHITELIST JSONSUB; do
+              encoded="$(jq -c . "$directory/$profile.JSON" | base64 -w 0)"
+              printf '%s://routing/onadd/%s\n' "$scheme" "$encoded" \
+                > "$directory/$profile.DEEPLINK"
+            done
+          }
+
+          generate_deeplinks HAPP happ
+          generate_deeplinks INCY incy
+
+          git add \
+            .github/workflows/sync-upstream.yml \
+            custom \
+            scripts/apply-custom-rules.py \
+            HAPP/DEFAULT.JSON HAPP/WHITELIST.JSON HAPP/JSONSUB.JSON \
+            HAPP/DEFAULT.DEEPLINK HAPP/WHITELIST.DEEPLINK HAPP/JSONSUB.DEEPLINK \
+            INCY/DEFAULT.JSON INCY/WHITELIST.JSON INCY/JSONSUB.JSON \
+            INCY/DEFAULT.DEEPLINK INCY/WHITELIST.DEEPLINK INCY/JSONSUB.DEEPLINK \
+            MIHOMO/default.yaml MIHOMO/template_remnawave.yaml
+          if ! git diff --cached --quiet; then
+            git commit -m "ci: reapply Voxell Routing overlay"
           fi
 
           git push origin main
