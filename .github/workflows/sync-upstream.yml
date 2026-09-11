@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: sync-upstream
+  group: routing-configs
   cancel-in-progress: false
 
 permissions:

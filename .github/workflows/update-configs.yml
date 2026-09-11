@@ -15,6 +15,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: routing-configs
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
