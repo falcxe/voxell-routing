@@ -3,7 +3,8 @@
 Файлы в этой папке — пользовательские дополнения форка:
 
 - `direct-domains.txt` — доменные суффиксы для DIRECT;
-- `direct-processes.txt` — Windows-процессы для DIRECT в Mihomo.
+- `direct-processes.txt` — Windows-процессы для DIRECT в Mihomo;
+- `direct-ips.txt` — IP-диапазоны (Valve) для DIRECT в HAPP/INCY.
 
 Скрипт `scripts/apply-custom-rules.py` применяет их к профилям `DEFAULT` для
 HAPP/INCY и к обоим шаблонам Mihomo. GitHub Actions запускает его перед

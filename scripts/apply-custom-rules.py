@@ -22,7 +22,7 @@ def read_items(path: Path) -> list[str]:
 
 
 def update_happ_profiles(
-    direct_domains: list[str], proxy_domains: list[str]
+    direct_domains: list[str], proxy_domains: list[str], direct_ips: list[str]
 ) -> None:
     direct_entries = [f"domain:{domain}" for domain in direct_domains]
     proxy_entries = [f"domain:{domain}" for domain in proxy_domains]
@@ -40,6 +40,12 @@ def update_happ_profiles(
         for entry in direct_entries:
             if entry not in direct_sites:
                 direct_sites.append(entry)
+                changed = True
+
+        direct_ip_list = data.setdefault("DirectIp", [])
+        for cidr in direct_ips:
+            if cidr not in direct_ip_list:
+                direct_ip_list.append(cidr)
                 changed = True
 
         proxy_sites = data.setdefault("ProxySites", [])
@@ -140,6 +146,7 @@ def main() -> None:
     direct_domains = read_items(CUSTOM_DIR / "direct-domains.txt")
     proxy_domains = read_items(CUSTOM_DIR / "proxy-domains.txt")
     processes = read_items(CUSTOM_DIR / "direct-processes.txt")
+    direct_ips = read_items(CUSTOM_DIR / "direct-ips.txt")
 
     if not direct_domains:
         raise SystemExit("custom/direct-domains.txt is empty")
@@ -148,7 +155,7 @@ def main() -> None:
     if not processes:
         raise SystemExit("custom/direct-processes.txt is empty")
 
-    update_happ_profiles(direct_domains, proxy_domains)
+    update_happ_profiles(direct_domains, proxy_domains, direct_ips)
     update_mihomo_profiles(direct_domains, proxy_domains, processes)
 
 
